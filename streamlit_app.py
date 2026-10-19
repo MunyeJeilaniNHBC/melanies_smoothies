@@ -15,7 +15,7 @@ cnx = st.connection("snowflake")
 session = cnx.session()
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'),col('SEARCH_ON'))
 pd_df = my_dataframe.to_pandas()
-options = st.multiselect( "What are your favorite fruits?", pd_df["FRUIT_NAME"],max_selection=5 )
+options = st.multiselect( "What are your favorite fruits?", pd_df["FRUIT_NAME"],max_selections=5 )
 
 if options:
     ingredients_string = ""
