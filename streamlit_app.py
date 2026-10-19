@@ -3,8 +3,6 @@ from snowflake.snowpark.functions import col
 import requests  
 smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
 #st.text(smoothiefroot_response.json())
-sf_dt = st.dataframe(data = smoothiefroot_response.json(),use_container_width = True)
-
 st.title(f":cup_with_straw: Customise your smoothie :cup_with_straw: {st.__version__}")
 
 st.write("""
@@ -19,6 +17,7 @@ session = cnx.session()
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME')) 
 options = st.multiselect( "What are your favorite fruits?", my_dataframe, )
 
+sf_dt = st.dataframe(data = smoothiefroot_response.json(),use_container_width = True)
 
 if options:
     ingredients_string = ""
