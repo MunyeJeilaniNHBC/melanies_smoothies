@@ -1,8 +1,8 @@
 import streamlit as st
 from snowflake.snowpark.functions import col
 import requests  
-smoothiefroot_response = requests.get("[https://my.smoothiefroot.com/api/fruit/watermelon](https://my.smoothiefroot.com/api/fruit/watermelon)")  
-st.text(smoothiefroot_response.json())
+smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
+#st.text(smoothiefroot_response.json())
 sf_dt = st.dataframe(data = smoothiefroot_response.json(),use_container_width = True)
 
 st.title(f":cup_with_straw: Customise your smoothie :cup_with_straw: {st.__version__}")
